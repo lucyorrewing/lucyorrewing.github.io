@@ -1,9 +1,55 @@
-*{
-    font-family: Georgia, 'Times New Roman', Times, serif;
-  }
+h1 {
+  font-family: 'Raleway', Helvetica, Arial, sans-serif;
+  font-size: 50px;
+  line-height: 70px;
+ }
+  
+ p {
+  font-family: 'Goudy Bookletter 1911', Georgia, Times, serif;
+  font-size: 15px;
+  line-height: 25px;
+ }
 
 .flexContainer{
     display: flex;
     flex-direction: column;
     width: 400px;
     margin: auto;
+}
+
+#nav {
+  text-align: justify;
+  min-width: 500px;
+}
+#nav:after {
+  content: '';
+  display: inline-block;
+  width: 100%;
+}
+#nav li {
+  display: inline-block;
+}
+
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.logo {
+  size: 2px;
+}
+
+.container {
+  position: relative;
+  text-align: center;
+  color: white;
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
