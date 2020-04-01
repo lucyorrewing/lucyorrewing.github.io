@@ -1,0 +1,276 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Good news</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    
+    <script>
+        
+         "use strict";
+    
+    $(function () {
+      var stickyTop = 0,
+          scrollTarget = false;
+      var timeline = $('.timeline__nav'),
+          items = $('li', timeline),
+          milestones = $('.timeline__section .milestone'),
+          offsetTop = parseInt(timeline.css('top'));
+      var TIMELINE_VALUES = {
+        start: 190,
+        step: 30
+      };
+      $(window).resize(function () {
+        timeline.removeClass('fixed');
+        stickyTop = timeline.offset().top - offsetTop;
+        $(window).trigger('scroll');
+      }).trigger('resize');
+      $(window).scroll(function () {
+        if ($(window).scrollTop() > stickyTop) {
+          timeline.addClass('fixed');
+        } else {
+          timeline.removeClass('fixed');
+        }
+      }).trigger('scroll');
+      items.find('span').click(function () {
+        var li = $(this).parent(),
+            index = li.index(),
+            milestone = milestones.eq(index);
+    
+        if (!li.hasClass('active') && milestone.length) {
+          scrollTarget = index;
+          var scrollTargetTop = milestone.offset().top - 80;
+          $('html, body').animate({
+            scrollTop: scrollTargetTop
+          }, {
+            duration: 400,
+            complete: function complete() {
+              scrollTarget = false;
+            }
+          });
+        }
+      });
+      $(window).scroll(function () {
+        var viewLine = $(window).scrollTop() + $(window).height() / 3,
+            active = -1;
+    
+        if (scrollTarget === false) {
+          milestones.each(function () {
+            if ($(this).offset().top - viewLine > 0) {
+              return false;
+            }
+    
+            active++;
+          });
+        } else {
+          active = scrollTarget;
+        }
+    
+        timeline.css('top', -1 * active * TIMELINE_VALUES.step + TIMELINE_VALUES.start + 'px');
+        items.filter('.active').removeClass('active');
+        items.eq(active != -1 ? active : 0).addClass('active');
+      }).trigger('scroll');
+    });
+
+
+    </script>
+
+
+</head>
+
+
+<body>
+
+    <h1> Timeline of Events </h1>
+    <article class="timeline"></article>
+ 
+    <div class="container">
+        <img src="good-news.jpg" alt="Good news" style="width:100%;">
+        <div class="content">
+          <h1>Some good news!</h1>
+        </div>
+      </div>
+
+      
+        
+         
+      <nav class="timeline__nav">
+        <ul>
+          <li><span>1</span></li>
+          <li><span>2</span></li>
+          <li><span>3</span></li>
+          <li><span>4</span></li>
+          <li><span>5</span></li>
+          <li><span>6</span></li>
+          <li><span>7</span></li>
+          <li><span>8</span></li>
+          <li><span>9</span></li>
+          <li><span>10</span></li>
+          <li><span>11</span></li>
+          <li><span>12</span></li>
+          <li><span>13</span></li>
+          <li><span>14</span></li>
+          <li><span>15</span></li>
+          <li><span>16</span></li>
+          <li><span>17</span></li>
+        </ul>
+      </nav>
+      <section class="timeline__section">
+        <div class="wrapper">
+          <h2 class="milestone">1</h2>
+          <p>Telegraph readers have raised more than £200,000 in the first 72 hours of our coronavirus charity appeal. The charity, Turn2Us, provides emergency grants to individuals and families facing severe financial difficulties due to the coronavirus crisis</p>
+          
+          <h2 class="milestone">2</h2>
+          <p>Yesterday, for the fourth day in a row, China reported a drop in new coronavirus infections, while Wuhan, the centre of the outbreak, had no new cases for six days.</p>
+          
+          <h2 class="milestone">3</h2>
+          <p>Several shoppers lined up to pay for the food of two paramedics in a Sainsbury’s in Essex at the weekend. The pair received cheers and praise for their service as they walked around the store.</p>
+         
+          
+          <h2 class="milestone">4</h2>
+          <p>Health authorities in Wuhan report the country's first death from the new coronavirus.</p>
+          
+          <h2 class="milestone">5</h2>
+          <p>First US case is reported: a 35-year-old man in Snohomish County, Washington.</p>
+                
+           <h2 class="milestone">6</h2>
+          <p>On 23 January 2020, Wuhan City was locked down – with all travel in and out of Wuhan prohibited – and movement inside the city was restricted.</p>
+          
+               
+           <h2 class="milestone">7</h2>
+          <p>The first European case was reported from France on 24 January 2020. This case had a travel history to China.</p>
+          
+          
+           <h2 class="milestone">8</h2>
+          <p>On 30 January 2020, the World Health Organization (WHO) declared this first outbreak of novel coronavirus a ‘public health emergency of international concern’.</p>
+    
+              
+          <h2 class="milestone">9</h2>
+          <p>President Trump bans foreign nationals from entering the US if they were in China within the prior two weeks.</p>
+    
+    
+          <h2 class="milestone">10</h2>
+          <p>First death outside China is recorded in the Philippines.</p>
+    
+          <h2 class="milestone">11</h2>
+          <p>US citizen dies in Wuhan – first death of an American citizen.</p>
+    
+          <h2 class="milestone">12</h2>
+          <p>Death toll in China surpasses that of the 2002-2003 SARS epidemic, with 811 deaths recorded.</p>
+    
+          <h2 class="milestone">13</h2>
+          <p>WHO announces that the new coronavirus disease will be called "COVID-19."</p>
+    
+              
+        <h2 class="milestone">14</h2>
+          <p>On 22 February, the Italian authorities reported clusters of cases in Lombardy and additional cases from two other regions, Piedmont and Veneto. Over the following days, cases were reported from several other regions. Transmission appears to have occurred locally, in contrast to first-generation transmission from people returning from affected areas. Transmission events were also reported from hospitals, with COVID-19 cases identified among healthcare workers and patients.</p>
+          
+           
+        <h2 class="milestone">15</h2>
+          <p>On 8 March 2020, Italy issued a decree to install strict public health measures including quarantine for all 60 million residents starting first in the most affected regions and on 11 March 2020, extending these measures at national level. Following Italy, Spain, France and many other European countries installed similar public health measures.</p>
+          
+          
+          
+        <h2 class="milestone">16</h2>
+          <p>On 11 March 2020, the Director General of the World Health Organization declared COVID-19 a global pandemic.</p>
+          
+      
+             
+        <h2 class="milestone">17</h2>
+          <p>Italy reports 475 COVID-19 deaths, the highest single-day death toll for any country since the outbreak began.</p>
+          
+                
+    
+          
+          
+          
+          </section>
+          
+          
+      </section>
+    </article>
+    
+
+</body>
+
+
+<style>
+
+
+html {
+  box-sizing: border-box;
+}
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+        
+       
+body {
+font-family: 'Roboto Condensed', sans-serif;
+  line-height: 1.5;
+  background-color: lightsteelblue;
+   
+}
+.container {
+  position: relative;
+  max-width: 800px; /* Maximum width */
+  margin: 0 auto; /* Center it */
+}
+
+.container .content {
+  position: absolute; /* Position the background text */
+  bottom: 0; /* At the bottom. Use top:0 to append it to the top */
+  background: rgb(0, 0, 0); /* Fallback color */
+  background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
+  color: #f1f1f1; /* Grey text */
+  width: 100%; /* Full width */
+  padding: 20px; /* Some padding */
+}
+
+}
+.wrapper {
+  margin: 0 auto;
+  padding: 0 16.66% 50px;
+  width: 100%;
+}
+article {
+  position: relative;
+  max-width: 980px;
+  margin: 0 auto;
+}
+.timeline__nav {
+  position: fixed;
+  z-index: 99;
+  top: 0;
+  transition: top 0.3s ease-out;
+}
+.timeline__nav ul {
+  list-style: none;
+  list-style-position: inside;
+  margin: 15px 0;
+}
+.timeline__nav ul li {
+  margin: 15px 0;
+  padding-left: 0;
+  list-style-type: none;
+  color: lightslategrey;
+  border-bottom: 1px dotted rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+}
+.timeline__nav ul li.active {
+  font-weight: bold;
+  color: #f94125;
+  border-bottom: 1px dotted transparent;
+  transform: scale(1.2);
+}
+.timeline__nav ul li:hover {
+  color: #000;
+}
+
+</style>
+
+
+</html>
